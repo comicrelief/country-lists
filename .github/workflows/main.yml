@@ -58,3 +58,40 @@ jobs:
 
       - name: Run tests
         run: npm test
+
+  release:
+    name: Release
+    if: github.ref == 'refs/heads/main'
+    needs:
+      - test
+      - lint
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 14
+
+      - name: Configure npm cache
+        run: npm config set cache "$(pwd)/.npm-cache"
+
+      - uses: actions/cache@v3
+        with:
+          path: .npm-cache
+          key: npm-cache-${{ hashFiles('package-lock.json') }}
+          restore-keys: npm-cache-
+
+      - name: Use npm@8
+        run: npm i -g npm@8
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Release
+        run: npx semantic-release
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_PUBLISHING_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

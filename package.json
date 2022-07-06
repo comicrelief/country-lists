@@ -1,13 +1,13 @@
 {
-  "name": "ts-package-template",
+  "name": "@comicrelief/country-lists",
   "version": "1.0.0",
-  "description": "A template for TypeScript packages",
-  "author": "Seb Aebischer",
+  "description": "Lists of countries for our frontend components",
+  "author": "Comic Relief",
   "license": "MIT",
   "main": "dist/index.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/seb-cr/ts-package-template.git"
+    "url": "git+https://github.com/comicrelief/country-lists.git"
   },
   "files": [
     "dist"
@@ -20,7 +20,7 @@
     "build": "tsc -p tsconfig-build.json",
     "clean": "rm -rf dist",
     "lint": "eslint src tests",
-    "mocha": "mocha --require ts-node/register --require tests/setup.ts",
+    "mocha": "mocha --require ts-node/register",
     "test": "npm run mocha -- 'tests/**/*.spec.ts'",
     "coverage": "nyc npm test"
   },
@@ -28,6 +28,7 @@
     "@comicrelief/eslint-config": "^1.4.0",
     "@istanbuljs/nyc-config-typescript": "^1.0.2",
     "@types/chai": "^4.3.1",
+    "@types/country-list": "^2.1.0",
     "@types/mocha": "^9.1.1",
     "@types/node": "^14.18.21",
     "@typescript-eslint/eslint-plugin": "^5.30.4",
@@ -36,8 +37,12 @@
     "eslint": "^8.19.0",
     "mocha": "^10.0.0",
     "nyc": "^15.1.0",
+    "semantic-release": "^19.0.3",
     "ts-node": "^10.8.2",
     "tsconfig-paths": "^4.0.0",
     "typescript": "^4.7.4"
+  },
+  "dependencies": {
+    "country-list": "^2.2.0"
   }
 }
