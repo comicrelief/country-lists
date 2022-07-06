@@ -12,3 +12,16 @@ countryList.overwrite([{
  * Includes every country as provided by `country-list`.
  */
 export const ALL_COUNTRIES = createList();
+
+/**
+ * Includes the United Kingdom and its Crown Dependencies: the Isle of Man,
+ * Jersey, and Guernsey.
+ */
+export const UK_AND_CHANNEL_ISLES = createList({
+  include: [
+    'Guernsey',
+    'Isle of Man',
+    'Jersey',
+    'United Kingdom',
+  ],
+});

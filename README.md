@@ -23,3 +23,7 @@ Each list includes:
 ### `ALL_COUNTRIES`
 
 Includes every country as provided by `country-list`.
+
+### `UK_AND_CHANNEL_ISLES`
+
+Includes the United Kingdom and its Crown Dependencies: the Isle of Man, Jersey, and Guernsey.
