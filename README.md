@@ -23,11 +23,11 @@ Includes the United Kingdom and its Crown Dependencies: the Isle of Man, Jersey,
 
 ## Each list includes these functions
 
-- `getSelectItems()`: returns the required `{ value, displayValue }` objects for the current `<Select>` component from our `https://github.com/comicrelief/component-library` repo.
+- `.getSelectItems()`: returns the required `{ value, displayValue }` objects for the current `<Select>` component from our `https://github.com/comicrelief/component-library` repo.
 
-- `getLegacySelectItems()`: returns the required `{ label, value }` objects for the legacy `SelectField` component from our `https://github.com/comicrelief/storybook` repo.
+- `.getLegacySelectItems()`: returns the required `{ label, value }` objects for the legacy `SelectField` component from our `https://github.com/comicrelief/storybook` repo.
 
-- `getNames()`: returns a plain list of country names.
+- `.getNames()`: returns a plain list of country names.
 
 
 ## Example usage in React
