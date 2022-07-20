@@ -11,6 +11,7 @@ export interface CountryList {
    */
   getSelectItems: () => { value: string, displayValue: string }[],
 
+  getSelectItemsLabel: () => { value: string, displayValue: string }[],
   /**
    * Returns a list of `{ value, label }` for use with our legacy components.
    */
@@ -57,9 +58,11 @@ export function createList(options: { include?: string[], exclude?: string[] } =
     countries = countries.filter((name) => !exclude.includes(name));
   }
 
+  let selectLabel = { label: 'Please select', selected: true };
+
   return {
     getNames: () => [...countries],
-    getSelectItems: () => countries.map((name) => ({ value: name, displayValue: name })),
-    getLegacySelectItems: () => countries.map((name) => ({ value: name, label: name })),
+    getSelectItems: () => countries.map(selectLabel, (name) => ({ value: name, displayValue: name })),
+    getLegacySelectItems: () => countries.map(selectLabel, (name) => ({ value: name, label: name })),
   };
 }
