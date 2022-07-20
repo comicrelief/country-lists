@@ -59,10 +59,14 @@ export function createList(options: { include?: string[], exclude?: string[] } =
   }
 
   let selectLabel = { label: 'Please select', selected: true };
+  let getSelectItems =  () => countries.map((name) => ({ value: name, displayValue: name }));
+  let getLegacySelectItems = () => countries.map((name) => ({ value: name, label: name }));
 
   return {
     getNames: () => [...countries],
-    getSelectItems: () => countries.map(selectLabel, (name) => ({ value: name, displayValue: name })),
-    getLegacySelectItems: () => countries.map(selectLabel, (name) => ({ value: name, label: name })),
+    getSelectItems: getSelectItems,
+    getSelectItemsWithLabel: () => [ selectLabel, getSelectItems],
+    getLegacySelectItems: getLegacySelectItems,
+    getLegacySelectItemsWithLabel: () => [ selectLabel, getLegacySelectItems],
   };
 }

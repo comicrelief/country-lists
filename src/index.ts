@@ -13,12 +13,6 @@ countryList.overwrite([{
  */
 export const ALL_COUNTRIES = createList();
 
-// const selectLabel = { label: 'Please select', selected: true };
-// const countryDataWithLabel = ALL_COUNTRIES.getLegacySelectItems();
-// countryDataWithLabel.unshift(selectLabel);
-
-console.log(ALL_COUNTRIES.getSelectItems)
-
 
 /**
  * Includes the United Kingdom and its Crown Dependencies: the Isle of Man,
