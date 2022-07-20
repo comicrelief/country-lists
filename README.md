@@ -10,7 +10,7 @@ yarn add @comicrelief/country-lists
 ```
 
 
-## This package currently comes with 2 country lists:
+## This package currently comes with 2 country lists
 
 `ALL_COUNTRIES`
 
@@ -21,7 +21,7 @@ Includes every country as provided by the popular npm package `country-list`.
 Includes the United Kingdom and its Crown Dependencies: the Isle of Man, Jersey, and Guernsey.
 
 
-## Each list includes these functions:
+## Each list includes these functions
 
 - `getSelectItems()`: returns the required `{ value, displayValue }` objects for the current `<Select>` component from our `https://github.com/comicrelief/component-library` repo.
 
@@ -30,7 +30,7 @@ Includes the United Kingdom and its Crown Dependencies: the Isle of Man, Jersey,
 - `getNames()`: returns a plain list of country names.
 
 
-## Example usage in React application:
+## Example usage in React
 ```
 import { ALL_COUNTRIES } from '@comicrelief/country-lists';
 import SelectField from '../SelectField/SelectField'; // CR Storybook component
