@@ -57,23 +57,23 @@ export function createList(options: { include?: string[], exclude?: string[] } =
     countries = countries.filter((name) => !exclude.includes(name));
   }
 
-  let getSelectItems = (defaultLabel?: string) => {
+  let getSelectItems = (defaultLabel?: string, defaultValue?: string) => {
     const output = countries.map((name) => ({ value: name, displayValue: name }));
     // Prepend the returned array with a pre-selected default option, when the
     // optional defaultLabel param is set
     if (defaultLabel) {
-      let selectLabel = { displayValue: defaultLabel, value: '', selected: true };
+      let selectLabel = { displayValue: defaultLabel, value: defaultValue ? defaultValue : '', selected: true };
       output.unshift(selectLabel);
     } 
     return output;
   }
 
-  let getLegacySelectItems = (defaultLabel?: string) => {
+  let getLegacySelectItems = (defaultLabel?: string, defaultValue?: string) => {
     const output = countries.map((name) => ({ value: name, label: name }));
     // Prepend the returned array with a pre-selected default select option,
     // only when the optional defaultLabel param is set
     if (defaultLabel) {
-      let selectLabel = { label: defaultLabel, value: '', selected: true };
+      let selectLabel = { label: defaultLabel, value: defaultValue ? defaultValue : '', selected: true };
       output.unshift(selectLabel);
     } 
     return output;
