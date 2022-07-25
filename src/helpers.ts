@@ -10,7 +10,7 @@ export interface CountryList {
    * Returns a list of `{ value, displayValue }` for use with our `<Select/>` component.
    */
   getSelectItems: () => { value: string, displayValue: string, selected?: boolean }[],
-  
+
   /**
    * Returns a list of `{ value, label }` for use with our legacy components.
    */
@@ -64,9 +64,9 @@ export function createList(options: { include?: string[], exclude?: string[] } =
     if (defaultLabel) {
       const selectLabel = { displayValue: defaultLabel, value: defaultValue || '', selected: true };
       output.unshift(selectLabel);
-    } 
+    }
     return output;
-  }
+  };
 
   const getLegacySelectItems = (defaultLabel?: string, defaultValue?: string) => {
     const output = countries.map((name) => ({ value: name, label: name }));
@@ -75,13 +75,13 @@ export function createList(options: { include?: string[], exclude?: string[] } =
     if (defaultLabel) {
       const selectLabel = { label: defaultLabel, value: defaultValue || '', selected: true };
       output.unshift(selectLabel);
-    } 
+    }
     return output;
-  }
+  };
 
   return {
     getNames: () => [...countries],
-    getSelectItems: getSelectItems,
-    getLegacySelectItems: getLegacySelectItems,
+    getSelectItems,
+    getLegacySelectItems,
   };
 }
