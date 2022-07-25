@@ -13,7 +13,6 @@ countryList.overwrite([{
  */
 export const ALL_COUNTRIES = createList();
 
-
 /**
  * Includes the United Kingdom and its Crown Dependencies: the Isle of Man,
  * Jersey, and Guernsey.
