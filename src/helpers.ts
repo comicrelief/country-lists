@@ -9,13 +9,12 @@ export interface CountryList {
   /**
    * Returns a list of `{ value, displayValue }` for use with our `<Select/>` component.
    */
-  getSelectItems: () => { value: string, displayValue: string }[],
-
-  getSelectItemsLabel: () => { value: string, displayValue: string }[],
+  getSelectItems: () => { value: string, displayValue: string, selected?: boolean }[],
+  
   /**
    * Returns a list of `{ value, label }` for use with our legacy components.
    */
-  getLegacySelectItems: () => { value: string, label: string }[],
+  getLegacySelectItems: () => { value: string, label: string, selected?: boolean }[],
 }
 
 /**
@@ -58,19 +57,31 @@ export function createList(options: { include?: string[], exclude?: string[] } =
     countries = countries.filter((name) => !exclude.includes(name));
   }
 
-  let selectLabel = { label: 'Please select', selected: true };
-  let getSelectItems = () => countries.map((name) => ({ value: name, displayValue: name }));
-  let getLegacySelectItems = () => countries.map((name) => ({ value: name, label: name }));
+  let getSelectItems = (defaultLabel?: string) => {
+    const output = countries.map((name) => ({ value: name, displayValue: name }));
+    // Prepend the returned array with a pre-selected default option, when the
+    // optional defaultLabel param is set
+    if (defaultLabel) {
+      let selectLabel = { displayValue: defaultLabel, value: '', selected: true };
+      output.unshift(selectLabel);
+    } 
+    return output;
+  }
 
-  let test = getSelectItems.unshift(selectLabel)
+  let getLegacySelectItems = (defaultLabel?: string) => {
+    const output = countries.map((name) => ({ value: name, label: name }));
+    // Prepend the returned array with a pre-selected default select option,
+    // only when the optional defaultLabel param is set
+    if (defaultLabel) {
+      let selectLabel = { label: defaultLabel, value: '', selected: true };
+      output.unshift(selectLabel);
+    } 
+    return output;
+  }
 
   return {
     getNames: () => [...countries],
-
     getSelectItems: getSelectItems,
-    getSelectItemsWithLabel: test,
-
     getLegacySelectItems: getLegacySelectItems,
-    getLegacySelectItemsWithLabel: () => [ selectLabel, getLegacySelectItems],
   };
 }
