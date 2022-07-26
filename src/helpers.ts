@@ -9,12 +9,12 @@ export interface CountryList {
   /**
    * Returns a list of `{ value, displayValue }` for use with our `<Select/>` component.
    */
-  getSelectItems: () => { value: string, displayValue: string, selected?: boolean }[],
+  getSelectItems: () => { value: string, displayValue: string }[],
 
   /**
    * Returns a list of `{ value, label }` for use with our legacy components.
    */
-  getLegacySelectItems: () => { value: string, label: string, selected?: boolean }[],
+  getLegacySelectItems: () => { value: string, label: string }[],
 }
 
 /**
@@ -57,31 +57,9 @@ export function createList(options: { include?: string[], exclude?: string[] } =
     countries = countries.filter((name) => !exclude.includes(name));
   }
 
-  const getSelectItems = (defaultLabel?: string, defaultValue?: string) => {
-    const output = countries.map((name) => ({ value: name, displayValue: name }));
-    // Prepend the returned array with a pre-selected default option, when the
-    // optional defaultLabel param is set
-    if (defaultLabel) {
-      const selectLabel = { displayValue: defaultLabel, value: defaultValue || '', selected: true };
-      output.unshift(selectLabel);
-    }
-    return output;
-  };
-
-  const getLegacySelectItems = (defaultLabel?: string, defaultValue?: string) => {
-    const output = countries.map((name) => ({ value: name, label: name }));
-    // Prepend the returned array with a pre-selected default select option,
-    // only when the optional defaultLabel param is set
-    if (defaultLabel) {
-      const selectLabel = { label: defaultLabel, value: defaultValue || '', selected: true };
-      output.unshift(selectLabel);
-    }
-    return output;
-  };
-
   return {
     getNames: () => [...countries],
-    getSelectItems,
-    getLegacySelectItems,
+    getSelectItems: () => countries.map((name) => ({ value: name, displayValue: name })),
+    getLegacySelectItems: () => countries.map((name) => ({ value: name, label: name })),
   };
 }
