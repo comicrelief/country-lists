@@ -33,7 +33,7 @@ Includes the United Kingdom and its Crown Dependencies: the Isle of Man, Jersey,
 ## Example usage in React
 ```
 import { ALL_COUNTRIES } from '@comicrelief/country-lists';
-import SelectField from '../SelectField/SelectField'; // CR Storybook component
+import { SelectField } from '@comicrelief/storybook';
 ...
 
 <SelectField
