@@ -50,7 +50,7 @@ import { ALL_COUNTRIES } from '@comicrelief/country-lists';
 ...
 
 // Adding a Label to the imported country list package
-const selectLabel = { label: 'Please select', selected: true };
+const selectLabel = { label: 'Please choose your country', selected: true };
 const countryDataWithLabel = ALL_COUNTRIES.getLegacySelectItems();
 countryDataWithLabel.unshift(selectLabel);
 
