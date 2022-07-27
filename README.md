@@ -30,17 +30,26 @@ Includes the United Kingdom and its Crown Dependencies: the Isle of Man, Jersey,
 - `.getNames()`: returns a plain list of country names.
 
 
-## Example usage in React
+## Example usage in React using comicrelief/component-library:
 ```
-import { ALL_COUNTRIES } from '@comicrelief/country-lists';
+import { Select } from "@comicrelief/component-library";
+import { ALL_COUNTRIES } from '@comicrelief/country-lists'
+...
+
+<Select
+  ...
+  options={ALL_COUNTRIES.getSelectItems()}
+/>
+```
+
+## Example usage in React using legacy comicrelief/storybook component library
+```
 import { SelectField } from '@comicrelief/storybook';
+import { ALL_COUNTRIES } from '@comicrelief/country-lists';
 ...
 
 <SelectField
-  id={field.name}
-  name={field.name}
-  label={field.label}
-  required={field.required}
+  ...
   options={ALL_COUNTRIES.getLegacySelectItems()}
 />
 ```
