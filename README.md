@@ -37,8 +37,9 @@ import { ALL_COUNTRIES } from '@comicrelief/country-lists'
 ...
 
 <Select
-  ...
-  options={ALL_COUNTRIES.getSelectItems()}
+  label="country"
+  description="Please choose your country"
+  options={ ALL_COUNTRIES.getSelectItems() }
 />
 ```
 
@@ -48,9 +49,13 @@ import { SelectField } from '@comicrelief/storybook';
 import { ALL_COUNTRIES } from '@comicrelief/country-lists';
 ...
 
+// Adding a Label to the imported country list package
+const selectLabel = { label: 'Please select', selected: true };
+const countryDataWithLabel = ALL_COUNTRIES.getLegacySelectItems();
+countryDataWithLabel.unshift(selectLabel);
+
 <SelectField
   ...
-  options={ALL_COUNTRIES.getLegacySelectItems()}
+  options={ countryDataWithLabel }
 />
 ```
-
