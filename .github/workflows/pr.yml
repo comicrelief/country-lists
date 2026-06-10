@@ -3,14 +3,13 @@ name: PR checks
 on: pull_request
 
 jobs:
-  # https://github.com/amannn/action-semantic-pull-request#example-config
-  semantic-pr:
+  # See https://github.com/amannn/action-semantic-pull-request
+  check-semantic-pr:
     name: Semantic pull request
     runs-on: ubuntu-latest
+    permissions:
+      pull-requests: read
     steps:
-      # Please look up the latest version from
-      # https://github.com/amannn/action-semantic-pull-request/releases
-      - uses: amannn/action-semantic-pull-request@v4
+      - uses: amannn/action-semantic-pull-request@v6
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
